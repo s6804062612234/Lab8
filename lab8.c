@@ -5,6 +5,8 @@ int random1to100();
 void printAr(int numAr[],int numArSize);
 int checkNum(int numAr[],int numArSize);
 int searchNum(int numAr[],int numArSize,int target);
+void sort(int arr[], int length);
+void swap(int *a, int *b);
 
 
 int main() {
@@ -19,6 +21,13 @@ int main() {
        
     printf("\n********\n");
     printAr(A,N);
+    
+    int length = N;
+    sort(A, N);
+    printf("\n3 best score are:");
+    for(i = length-1; i >= length-3; i--) {
+        printf(" %d", A[i]);
+    }
     
     return 0;
 }
@@ -55,3 +64,24 @@ int random1to100() {
     printf("%d ", random_num);
     return random_num;
 }
+
+void sort(int arr[], int length) {
+    int i, j;
+
+    for(i=length-1; i>0; i--) {
+        for(j=0; j<i; j++) {
+            if(arr[j] > arr[j+1]) {
+                swap(&arr[j], &arr[j+1]);
+            }
+        }
+    }
+}
+
+void swap(int *a, int *b) {
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+
